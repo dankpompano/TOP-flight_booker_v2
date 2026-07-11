@@ -1,0 +1,26 @@
+<p>
+  <%=form_with url: 'flights_search', method: :get do |form| %>
+    <table>
+      <thead>
+        <tr>Flights</tr><br><br>
+      </thead>
+
+        <tbody>
+          <tr> <%=form.label :departure_airport_id, "Departing Airport" %> </tr><br>
+            <tr> <%=form.collection_select :departure_airport_id, Airport.all, :id, :code, prompt: 'Select an Airport' %> </tr><br>
+
+            <tr> <%=form.label :arrival, "Arriving Airport" %> </tr><br>
+            <tr> <%=form.collection_select :arrival_airport_id, Airport.all, :id, :code, prompt: 'Select an Airport' %> </tr><br>
+
+
+            <tr> <%= form.label :start, "Dates" %> <tr><br>
+            <tr> <%= form.time_select :start %> </tr><br>
+
+            <tr> <%=form.label :duration, "Flight Duration" %> </tr><br>
+            <tr> <%=form.time_select :duration%> </tr><br>
+        </tbody>
+      <%= form.submit "Search" %>
+    </table>
+  <% end %>
+
+</p>
