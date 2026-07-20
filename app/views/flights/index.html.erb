@@ -23,4 +23,25 @@
     </table>
   <% end %>
 
+
+  <% if @flights.present? %>
+      <table>
+        <thead>
+          <th>Arrival ID</th>
+          <th>Departure ID</th>
+          <th>Start Date</th>
+        </thead>
+        <tbody>
+          <% @flights.each do |flight| %>
+            <tr>
+              <td><%= flight.arrival_airport_id %></td>
+              <td><%= flight.departure_airport_id %></td>
+              <td><%= flight.start %></td> 
+            </tr>
+        </tbody>
+      </table>
+    <% end %>
+     <% else %>
+        <p>No flights found.</p>
+  <% end %>
 </p>
