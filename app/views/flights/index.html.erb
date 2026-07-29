@@ -1,5 +1,5 @@
 <p>
-  <%=form_with url: 'flights_search', method: :get do |form| %>
+  <%=form_with url: search_results_path, method: :get do |form| %>
     <table>
       <thead>
         <tr>Flights</tr><br><br>
@@ -22,8 +22,9 @@
       <%= form.submit "Search" %>
     </table>
   <% end %>
+</p>
 
-
+<p>
   <% if @flights.present? %>
       <table>
         <thead>
@@ -38,10 +39,10 @@
               <td><%= flight.departure_airport_id %></td>
               <td><%= flight.start %></td> 
             </tr>
+          <% end %>
         </tbody>
       </table>
-    <% end %>
-     <% else %>
+    <% else %>
         <p>No flights found.</p>
   <% end %>
 </p>

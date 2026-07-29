@@ -1,0 +1,22 @@
+<p>
+  <table>
+    <thead>
+      <tr>
+        <th>Departure ID</th>
+        <th>Arrival ID</th>
+        <th>Start</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@flights.each do |flight| %>
+        <tr>
+          <td> <%=flight.departure_airport.id%> </td>
+          <td> <%=flight.arrival_airport.id%> </td>
+          <td> <%=flight.start%> </td>
+          <td> <%=flight.duration%> </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+</p>

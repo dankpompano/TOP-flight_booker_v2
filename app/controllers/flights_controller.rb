@@ -1,13 +1,18 @@
 class FlightsController < ApplicationController
   def index
     @flights = Flight.all
-    @flights = Flight.where(departure_airport: params[:departure_airport]) if params[:departure_airport].present?
-    @flights = Flight.where(arrival_airport: params[:arrival_airport]) if params[:arrival_airport].present?
-    @flights = Flight.where(start: params[:start]) if params[:start].present?
-    @flights = Flight.where(duration: params[:duration]) if params[:duration].present?
+    @flights = @flights.where(departure_airport_ids: params[:departure_airport_ids]) if params[:departure_airport_ids].present?
+    @flights = @flights.where(arrival_airport_ids: params[:arrival_airport_ids]) if params[:arrival_airport_ids].present?
+    @flights = @flights.where(start: params[:start]) if params[:start].present?
+    @flights = @flights.where(duration: params[:duration]) if params[:duration].present?
   end
 
   def results
+    @flights = Flight.all
+    @flights = @flights.where(departure_airport_ids: params[:departure_airport_ids]) if params[:departure_airport_ids].present?
+    @flights = @flights.where(arrival_airport_ids: params[:arrival_airport_ids]) if params[:arrival_airport_ids].present?
+    @flights = @flights.where(start: params[:start]) if params[:start].present?
+    @flights = @flights.where(duration: params[:duration]) if params[:duration].present?
   end
 
   private
