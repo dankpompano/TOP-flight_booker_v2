@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
-    # @passengers = Passenger.find[:flight_id]
+    @booking.passengers.new
   end
 
   def create
