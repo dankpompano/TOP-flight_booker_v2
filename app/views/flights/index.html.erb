@@ -4,7 +4,6 @@
       <thead>
         <tr>Flights</tr><br><br>
       </thead>
-
         <tbody>
           <tr> <%=form.label :departure_airport_id, "Departing Airport" %> </tr><br>
             <tr> <%=form.collection_select :departure_airport_id, Airport.all, :id, :code, prompt: 'Select an Airport' %> </tr><br>

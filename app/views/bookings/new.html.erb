@@ -1,4 +1,4 @@
-<% form_with model: @booking do |form| %>
+<%= form_with model: @booking do |form| %>
   <table>
       <thead>
         <tr>Flights</tr><br><br>
@@ -11,7 +11,7 @@
           <tr> <%=form.label :arrival, "Arriving Airport" %> </tr><br>
           <tr> <%=form.collection_select :arrival_airport_id, Airport.all, :id, :code, prompt: 'Select an Airport' %> </tr><br>
 
-          <%= f.fields_for :passenger do |passenger_fields| %>
+          <%= form.fields_for :passengers do |passenger_fields| %>
             <div>
               <tr><%= passenger_fields.label :name %></tr><br>
               <tr><%= passenger_fields.text_field :name %></tr><br>
@@ -20,6 +20,6 @@
             </div>
           <% end %>
         </tbody>
-      <%= form.submit "Search" %>
+      <%= form.submit "Submit" %>
   </table>
 <% end %>
