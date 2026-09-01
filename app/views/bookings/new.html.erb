@@ -18,28 +18,24 @@
               <tr><%= passenger_fields.label :email %></tr><br>
               <tr><%= passenger_fields.text_field :email %></tr><br>
             </div>
-
-            <template data-nested-form-target="template">
-              <tr> <%=form.label :start, "Date" %> </tr><br>
-              <tr> <%=form.time_select :start %> </tr><br>
-
-              <tr> <%=form.label :arrival, "Arriving Airport" %> </tr><br>
-              <tr> <%=form.collection_select :arrival_airport_id, Airport.all, :id, :code, prompt: 'Select an Airport' %> </tr><br>
-
-              <%= form.fields_for :passengers do |passenger_fields| %>
-                <div>
-                  <tr><%= passenger_fields.label :name %></tr><br>
-                  <tr><%= passenger_fields.text_field :name %></tr><br>
-                  <tr><%= passenger_fields.label :email %></tr><br>
-                  <tr><%= passenger_fields.text_field :email %></tr><br>
-                </div>
+          <% end %>
+          <template data-nested-form-target="target">
+              <div>
+                <%= form.fields_for :passengers do |passenger_fields| %>
+                  <div>
+                    <tr><%= passenger_fields.label :name %></tr><br>
+                    <tr><%= passenger_fields.text_field :name %></tr><br>
+                    <tr><%= passenger_fields.label :email %></tr><br>
+                    <tr><%= passenger_fields.text_field :email %></tr><br>
+                  </div>
+                <% end %>
+              </div>
             </template>
 
-            <div id="container" data-controllers="passengers">
-              <button data-action="click->add">Add Passenger</button>
-              <button data-action="click->remove">Remove Passenger</button>
+            <div id="container" data-controller="passenger">
+              <button data-action="click->passengers#add">Add Passenger</button>
+              <button data-action="click#remove">Remove Passenger</button>
             </div>
-          <% end %>
         </tbody>
       <%= form.submit "Submit" %>
   </table>
